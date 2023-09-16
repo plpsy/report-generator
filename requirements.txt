@@ -1,0 +1,15 @@
+altgraph==0.17.3
+et-xmlfile==1.0.1
+future==0.18.3
+iso8601==0.1.16
+jdcal==1.4.1
+lxml==4.3.1
+macholib==1.16.2
+openpyxl==2.5.14
+pefile==2017.9.3
+python-docx==0.8.11
+pywin32-ctypes==0.2.0
+PyYAML==5.3.1
+serial==0.0.97
+sv-ttk==2.4.5
+tk==0.1.0

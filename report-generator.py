@@ -214,9 +214,9 @@ class MY_GUI():
         thisthread.start()
 
     def save_to_docx(self):
-        document = Document(docx=os.path.join(os.getcwd(), 'default.docx'))    
-        paragraph = document.add_paragraph('Lorem ipsum dolor sit amet.')
-        prior_paragraph = paragraph.insert_paragraph_before('Lorem ipsum')
+        document = Document(docx=os.path.join(os.getcwd(), 'temple.docx'))    
+        # paragraph = document.add_paragraph('Lorem ipsum dolor sit amet.')
+        # prior_paragraph = paragraph.insert_paragraph_before('Lorem ipsum')
 
         document.save(r"D:\test.docx")
 
