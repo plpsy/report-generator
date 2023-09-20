@@ -10,8 +10,8 @@ _expect_col = 3
 _result_col = 4
 _conclusion_col = 5
 
-def get_output():
-    with open('output.txt', 'r', encoding='utf-8') as f:
+def get_output(path):
+    with open(path, 'r', encoding='utf-8') as f:
         lines = f.readlines()
         return [x.lower() for x in lines]
     return []
@@ -61,16 +61,16 @@ def infer_result(lines, row, target_str):
             if left in line and right in line:
                 result_str = line.split(left)[1]
                 if(right == ''):
-                    return True, f" {result_str.strip()} "
+                    return True, " %s " %(result_str.strip())
                 else:
-                    return True, f" {result_str.split(right)[0].strip()} "
+                    return True, " %s " %(result_str.split(right)[0].strip())
         return False, " xxxx "
     else:
         for line in lines:
             if target_str in line:
                 if "times" in target_str or "recv" in target_str:
                     count = re.findall(r'\d+', line)[-1]
-                    return True, f" {count} "
+                    return True, " %s " %(count)
                 else:
                     return True, " Ok "
         else:
@@ -120,18 +120,16 @@ def generate_table(document, lines, tabidx):
             continue
         generate_row(lines, row)
 
-def generate_docx():
+def generate_docx(lines, path):
     document = Document(docx=os.path.join(os.getcwd(), 'temple.docx'))
-    lines = get_output()
     generate_table(document, lines, 2)
     generate_table(document, lines, 3)
     generate_table(document, lines, 4)
   
-
-    document.save("test.docx")
-
-def main():
-    generate_docx()
+    document.save(path)
 
 
-main()
+
+if __name__ == '__main__':
+    lines = get_output()
+    generate_docx(lines)
